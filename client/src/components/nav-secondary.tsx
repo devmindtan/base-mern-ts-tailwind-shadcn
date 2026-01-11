@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import {NavLink} from "react-router-dom"
 import type {LucideIcon} from "lucide-react"
 
 import {
@@ -12,9 +13,9 @@ import {
 } from "@/components/ui/sidebar"
 
 export function NavSecondary({
-  items,
-  ...props
-}: {
+                               items,
+                               ...props
+                             }: {
   items: {
     title: string
     url: string
@@ -28,10 +29,15 @@ export function NavSecondary({
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild>
-                <a href={item.url}>
-                  <item.icon />
+                <NavLink
+                  to={item.url}
+                  className={({isActive}) =>
+                    isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
+                  }
+                >
+                  <item.icon/>
                   <span>{item.title}</span>
-                </a>
+                </NavLink>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}

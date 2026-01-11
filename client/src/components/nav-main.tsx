@@ -1,6 +1,6 @@
-import {MailIcon, PlusCircleIcon, type LucideIcon} from "lucide-react"
+import {type LucideIcon} from "lucide-react"
+import {NavLink} from "react-router-dom" // 1. Import NavLink
 
-import {Button} from "@/components/ui/button"
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -22,16 +22,20 @@ export function NavMain({
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
         <SidebarMenu>
-          <SidebarMenuItem className="flex items-center gap-2">
-           
-          </SidebarMenuItem>
-        </SidebarMenu>
-        <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title}>
-                {item.icon && <item.icon/>}
-                <span>{item.title}</span>
+              {/* 2. Thêm asChild để SidebarMenuButton đóng vai trò là Link */}
+              <SidebarMenuButton asChild tooltip={item.title}>
+                <NavLink
+                  to={item.url}
+                  // 3. Tự động thêm màu highlight khi trang đang active
+                  className={({isActive}) =>
+                    isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
+                  }
+                >
+                  {item.icon && <item.icon/>}
+                  <span>{item.title}</span>
+                </NavLink>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
