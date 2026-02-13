@@ -4,9 +4,17 @@ import {SidebarProvider, SidebarInset} from "@/components/ui/sidebar";
 import {AppSidebar} from "@/components/app-sidebar";
 import Dashboard from "@/pages/dashboard.tsx";
 import Setting from "@/pages/setting.tsx";
-
-import {SiteHeader} from "@/components/site-header"
 import DataLibrary from "@/pages/data-library.tsx";
+import Lifecycle from "@/pages/lifecycle.tsx";
+import Analytics from "@/pages/analytics.tsx";
+import Projects from "@/pages/projects.tsx";
+import Team from "@/pages/team.tsx";
+import Reports from "@/pages/reports.tsx";
+import WordAssistant from "@/pages/word-assistant.tsx";
+import Help from "@/pages/help.tsx";
+import Search from "@/pages/search.tsx";
+
+import {SiteHeader} from "@/components/site-header";
 
 const RootLayout = () => (
   <SidebarProvider>
@@ -30,8 +38,16 @@ const router = createBrowserRouter([
         element: <Dashboard/>,
       },
       {path: "dashboard", element: <Dashboard/>},
-      {path: "settings", element: <Setting/>},
+      {path: "lifecycle", element: <Lifecycle/>},
+      {path: "analytics", element: <Analytics/>},
+      {path: "projects", element: <Projects/>},
+      {path: "team", element: <Team/>},
       {path: "data-library", element: <DataLibrary/>},
+      {path: "reports", element: <Reports/>},
+      {path: "word-assistant", element: <WordAssistant/>},
+      {path: "settings", element: <Setting/>},
+      {path: "help", element: <Help/>},
+      {path: "search", element: <Search/>},
     ],
   },
 ]);
